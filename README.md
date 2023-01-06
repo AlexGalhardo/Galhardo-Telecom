@@ -1,5 +1,5 @@
 <div align="center">
-<h1 align="center"><a href="galhardo-telecom.up.railway.app" target="_blank">Galhardo Telecom</a></h1>
+<a href="galhardo-telecom.up.railway.app" target="_blank"><h1 align="center">Galhardo Telecom</h1></a>
 <small align="center">A simple freelancer web project</small>
 </div>
 </div>
