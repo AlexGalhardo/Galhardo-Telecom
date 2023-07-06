@@ -4,12 +4,13 @@
 </div>
 
 ## Installation Guide
+
 - $ `git clone https://github.com/AlexGalhardo/galhardo-telecom`
 - $ `cd galhardo-telecom`
 - $ `npm i`
 - $ `cp .env-example .env`
 - $ `npm run dev`
-- $ Go to: http://localhost:3000
+- Go to: <http://localhost:3000>
 
 ## Video Demo
 
