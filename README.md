@@ -1,6 +1,5 @@
 <div align="center">
-<h1 align="center"><a href="https://galhardo-telecom.up.railway.app" target="_blank">Galhardo Telecom</a></h1>
-<small align="center">A simple freelancer web project</small>
+<h1 align="center"><a href="#" target="_blank">Galhardo Telecom</a></h1>
 </div>
 </div>
 
@@ -8,6 +7,10 @@
 - $ `git clone https://github.com/AlexGalhardo/galhardo-telecom`
 - $ `cd galhardo-telecom`
 - $ `npm i`
+- $ `cp .env-example .env`
 - $ `npm run dev`
 - $ Go to: http://localhost:3000
 
+## Video Demo
+
+<https://github.com/AlexGalhardo/Galhardo-Telecom/assets/19540357/975dcac0-1797-4dbd-a37f-a43574ef9667>
