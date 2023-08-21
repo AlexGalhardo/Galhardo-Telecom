@@ -3,16 +3,16 @@ import NodeMailer from '../helpers/NodeMailer.js'
 import Customers from '../models/JSON/Customers.js'
 
 class AuthController {
-	static async getViewLogin (req, res) {
+	static async getViewLogin(req, res) {
 		return res.render('pages/auth/login', {
 			flash_success: req.flash('success'),
 			flash_warning: req.flash('warning'),
 			captcha: res.recaptcha,
-			csrfToken: req.csrfToken()
+			// csrfToken: req.csrfToken()
 		});
 	}
 
-	static async postLogin (req, res) {
+	static async postLogin(req, res) {
 		try {
 			const errors = validationResult(req);
 
@@ -48,7 +48,7 @@ class AuthController {
 		}
 	}
 
-	static getViewRegister (req, res) {
+	static getViewRegister(req, res) {
 		return res.render('pages/auth/register', {
 			captcha: res.recaptcha,
 			flash_success: req.flash('success'),
@@ -58,7 +58,7 @@ class AuthController {
 		});
 	}
 
-	static async verifyIfConfirmEmailURLIsValid (req, res) {
+	static async verifyIfConfirmEmailURLIsValid(req, res) {
 		const { email, token } = req.params;
 
 		const confirmEmailValid = await Customers.verifyConfirmEmailToken(email, token)
@@ -71,7 +71,7 @@ class AuthController {
 		return res.redirect('/login')
 	}
 
-	static async postRegister (req, res, next) {
+	static async postRegister(req, res, next) {
 		try {
 			if (!req.recaptcha.error) {
 				const errors = validationResult(req);
@@ -114,11 +114,11 @@ class AuthController {
 		}
 	}
 
-	static getViewForgetPassword (req, res) {
+	static getViewForgetPassword(req, res) {
 		return res.render('pages/auth/forgetPassword');
 	}
 
-	static async postForgetPassword (req, res) {
+	static async postForgetPassword(req, res) {
 		const { email } = req.body;
 
 		await Customers.createResetPasswordToken(email);
@@ -128,7 +128,7 @@ class AuthController {
 		return res.redirect('/esqueci-senha')
 	}
 
-	static getViewResetPassword (req, res) {
+	static getViewResetPassword(req, res) {
 		const { email, token } = req.params
 
 		if (!email || !token) {
@@ -144,7 +144,7 @@ class AuthController {
 		});
 	}
 
-	static postResetPassword (req, res) {
+	static postResetPassword(req, res) {
 		const { email, new_password } = req.body
 
 		if (!Customers.resetPassword(email, new_password)) {
@@ -155,13 +155,13 @@ class AuthController {
 		return res.redirect('/login')
 	}
 
-	static getViewResendConfirmEmailLink (req, res) {
+	static getViewResendConfirmEmailLink(req, res) {
 		return res.render('pages/auth/confirmEmail', {
 			flash_success: req.flash('success')
 		});
 	}
 
-	static async postSendConfirmEmailLink (req, res) {
+	static async postSendConfirmEmailLink(req, res) {
 		const { email } = req.body
 
 		const emailConfirmed = await Customers.verifyIfEmailIsConfirmed(email)
