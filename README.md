@@ -3,13 +3,27 @@
 </div>
 </div>
 
-## Installation Guide
-
-- $ `git clone https://github.com/AlexGalhardo/galhardo-telecom`
-- $ `cd galhardo-telecom`
-- $ `npm i`
-- $ `cp .env-example .env`
-- $ `npm run dev`
+## Setup
+- Clone repository
+```
+git clone https://github.com/AlexGalhardo/galhardo-telecom
+```
+- Enter folder
+```
+cd galhardo-telecom
+```
+- Install dependencies
+```
+npm i
+```
+- Create .env
+```
+cp .env-example .env
+```
+- Up local server
+```
+npm run dev
+```
 - Go to: <http://localhost:3000>
 
 ## Video Demo
