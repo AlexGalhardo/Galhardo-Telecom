@@ -3,7 +3,7 @@ dotenv.config()
 
 import { RecaptchaV3 } from 'express-recaptcha'
 
-const recaptcha = new RecaptchaV3(process.env.RECAPTCHA_ID, process.env.RECAPTCHA_SECRET, { callback: 'cb' });
+const recaptcha = new RecaptchaV3(process.env.RECAPTCHA_SITE_KEY, process.env.RECAPTCHA_SECRET_KEY, { callback: 'cb' });
 
 import csrf from 'csurf'
 const csrfProtection = csrf({ cookie: true })
