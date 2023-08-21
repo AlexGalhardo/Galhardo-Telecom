@@ -1,5 +1,5 @@
 function cb(token){
-    var input = document.createElement('input');
+    const input = document.createElement('input');
     input.setAttribute('type', 'text');
     input.setAttribute('name', 'g-recaptcha-response');
     input.setAttribute('value', token);

@@ -26,8 +26,8 @@ const userIsAuthenticated = (req, res, next) => {
 router
 	.get('/', AppController.getViewHome)
 
-	.get('/contato', recaptcha.middleware.render, csrfProtection, AppController.getViewContact)
-	.post('/contato', recaptcha.middleware.verify, csrfProtection, AppController.postContact)
+	.get('/contato', /*recaptcha.middleware.render, csrfProtection ,*/  AppController.getViewContact)
+	.post('/contato', /*recaptcha.middleware.verify, csrfProtection ,*/ AppController.postContact)
 
 	.get('/politica-de-privacidade', AppController.getViewPrivacy)
 	.get('/termos-de-uso', AppController.getViewTerms)
@@ -54,11 +54,11 @@ router
 		return res.redirect('/')
 	})
 
-	.get('/login', userIsAuthenticated, recaptcha.middleware.render, /* csrfProtection ,*/ AuthController.getViewLogin)
-	.post('/login', userIsAuthenticated, recaptcha.middleware.verify, /* csrfProtection ,*/ AuthController.postLogin)
+	.get('/login', userIsAuthenticated,  /*recaptcha.middleware.render, csrfProtection ,*/ AuthController.getViewLogin)
+	.post('/login', userIsAuthenticated,  /*recaptcha.middleware.verify, csrfProtection ,*/ AuthController.postLogin)
 
-	.get('/criar-conta', userIsAuthenticated, recaptcha.middleware.render, csrfProtection, AuthController.getViewRegister)
-	.post('/criar-conta', userIsAuthenticated, recaptcha.middleware.verify, csrfProtection, AuthController.postRegister)
+	.get('/criar-conta', userIsAuthenticated, /*recaptcha.middleware.render, csrfProtection ,*/ AuthController.getViewRegister)
+	.post('/criar-conta', userIsAuthenticated, /*recaptcha.middleware.verify, csrfProtection ,*/ AuthController.postRegister)
 
 	.get('/esqueci-senha', userIsAuthenticated, AuthController.getViewForgetPassword)
 	.post('/esqueci-senha', userIsAuthenticated, AuthController.postForgetPassword)
