@@ -9,7 +9,9 @@ async function getJSONDatabase() {
 	})
 	const json = await response.json()
 
-	return json
+	console.log('json => ', json.record)
+
+	return json.record
 }
 
 const json_database = await getJSONDatabase()
