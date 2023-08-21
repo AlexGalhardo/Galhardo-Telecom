@@ -1,5 +1,17 @@
-import fs from 'fs-extra'
+// import fs from 'fs-extra'
 
-const json_database = JSON.parse(fs.readFileSync('../public/data/database.json'));
+// const json_database = JSON.parse(fs.readFileSync('../data/public/database.json'));
+
+async function getJSONDatabase() {
+	const response = await fetch(`https://api.jsonbin.io/v3/b/64e3621fb89b1e2299d3f1c5`, {
+		method: 'GET',
+		headers: { 'X-Master-Key': '$2b$10$10eZrvYd8wMiWOlkdRHPC.t42gNn94OIivB9exDLWxYDx987rZ59y' },
+	})
+	const json = await response.json()
+
+	return json
+}
+
+const json_database = await getJSONDatabase()
 
 export default json_database
