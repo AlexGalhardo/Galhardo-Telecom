@@ -54,8 +54,8 @@ router
 		return res.redirect('/')
 	})
 
-	.get('/login', userIsAuthenticated, recaptcha.middleware.render, csrfProtection, AuthController.getViewLogin)
-	.post('/login', userIsAuthenticated, recaptcha.middleware.verify, csrfProtection, AuthController.postLogin)
+	.get('/login', userIsAuthenticated, recaptcha.middleware.render, /* csrfProtection ,*/ AuthController.getViewLogin)
+	.post('/login', userIsAuthenticated, recaptcha.middleware.verify, /* csrfProtection ,*/ AuthController.postLogin)
 
 	.get('/criar-conta', userIsAuthenticated, recaptcha.middleware.render, csrfProtection, AuthController.getViewRegister)
 	.post('/criar-conta', userIsAuthenticated, recaptcha.middleware.verify, csrfProtection, AuthController.postRegister)
