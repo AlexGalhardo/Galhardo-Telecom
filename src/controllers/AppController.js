@@ -3,7 +3,7 @@ import NodeMailer from '../helpers/NodeMailer.js'
 import Header from '../helpers/Header.js'
 import DateTime from '../helpers/DateTime.js'
 export default class AppController {
-	static async getViewHome (req, res) {
+	static async getViewHome(req, res) {
 		return res.render('pages/home', {
 			flash_success: req.flash('success'),
 			flash_warning: req.flash('warning'),
@@ -12,11 +12,11 @@ export default class AppController {
 		});
 	}
 
-	static async getViewContract (req, res) {
+	static async getViewContract(req, res) {
 		return res.render('pages/contract', {});
 	}
 
-	static async getViewFrequentQuestions (req, res) {
+	static async getViewFrequentQuestions(req, res) {
 		return res.render('pages/frequent-questions', {
 			flash_success: req.flash('success'),
 			flash_warning: req.flash('warning'),
@@ -25,7 +25,7 @@ export default class AppController {
 		})
 	}
 
-	static async getViewPlan (req, res) {
+	static async getViewPlan(req, res) {
 		return res.render('pages/plan', {
 			flash_success: req.flash('success'),
 			flash_warning: req.flash('warning'),
@@ -34,7 +34,7 @@ export default class AppController {
 		})
 	}
 
-	static async getViewWorkWithUs (req, res) {
+	static async getViewWorkWithUs(req, res) {
 		return res.render('pages/work-with-us', {
 			flash_success: req.flash('success'),
 			flash_warning: req.flash('warning'),
@@ -43,7 +43,7 @@ export default class AppController {
 		})
 	}
 
-	static getViewContact (req, res) {
+	static getViewContact(req, res) {
 		res.render('pages/contact', {
 			flash_success: req.flash('success'),
 			flash_warning: req.flash('warning'),
@@ -54,19 +54,19 @@ export default class AppController {
 		});
 	}
 
-	static async postContact (req, res) {
+	static async postContact(req, res) {
 		try {
 			const errors = validationResult(req);
 
-			if (!req.recaptcha.error) {
-				if (!errors.isEmpty()) {
-					req.flash('warning', `${errors.array()[0].msg}`)
-					return res.redirect('/contato')
-				}
-			} else {
-				req.flash('warning', `Invalid Recaptcha!`)
-				return res.redirect('/contato')
-			}
+			// if (!req.recaptcha.error) {
+			// 	if (!errors.isEmpty()) {
+			// 		req.flash('warning', `${errors.array()[0].msg}`)
+			// 		return res.redirect('/contato')
+			// 	}
+			// } else {
+			// 	req.flash('warning', `Invalid Recaptcha!`)
+			// 	return res.redirect('/contato')
+			// }
 
 			const { name,
 				email,
@@ -96,14 +96,14 @@ export default class AppController {
 		}
 	}
 
-	static getViewPrivacy (req, res) {
+	static getViewPrivacy(req, res) {
 		return res.render('pages/privacy', {
 			user: SESSION_USER,
 			header: Header.privacy()
 		});
 	}
 
-	static getViewTerms (req, res) {
+	static getViewTerms(req, res) {
 		return res.render('pages/terms', {
 			user: SESSION_USER,
 			header: Header.terms()

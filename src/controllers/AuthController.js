@@ -16,15 +16,15 @@ class AuthController {
 		try {
 			const errors = validationResult(req);
 
-			if (!req.recaptcha.error) {
-				if (!errors.isEmpty()) {
-					req.flash('warning', `${errors.array()}`)
-					return res.redirect('/login')
-				}
-			} else {
-				req.flash('warning', `Recaptcha inválido!`)
-				return res.redirect('/login')
-			}
+			// if (!req.recaptcha.error) {
+			// 	if (!errors.isEmpty()) {
+			// 		req.flash('warning', `${errors.array()}`)
+			// 		return res.redirect('/login')
+			// 	}
+			// } else {
+			// 	req.flash('warning', `Recaptcha inválido!`)
+			// 	return res.redirect('/login')
+			// }
 
 			const { email, password } = req.body;
 
@@ -73,17 +73,17 @@ class AuthController {
 
 	static async postRegister(req, res, next) {
 		try {
-			if (!req.recaptcha.error) {
-				const errors = validationResult(req);
+			// if (!req.recaptcha.error) {
+			// 	const errors = validationResult(req);
 
-				if (!errors.isEmpty()) {
-					req.flash('warning', errors.array()[0].msg)
-					return res.redirect('/criar-conta')
-				}
-			} else {
-				req.flash('warning', 'Recaptcha inválido!')
-				return res.redirect('/criar-conta')
-			}
+			// 	if (!errors.isEmpty()) {
+			// 		req.flash('warning', errors.array()[0].msg)
+			// 		return res.redirect('/criar-conta')
+			// 	}
+			// } else {
+			// 	req.flash('warning', 'Recaptcha inválido!')
+			// 	return res.redirect('/criar-conta')
+			// }
 
 			const { username,
 				email,
