@@ -3,12 +3,12 @@ import slugify from 'slugify'
 import database from '../../config/json_database.js'
 
 class Blog {
-	static save (database, error_message) {
+	static save(database, error_message) {
 		for (let i = 0; i < database.blog.length; i++) {
 			database.blog[i].id = i + 1
 		}
 
-		fs.writeFileSync(process.env.JSON_DATABASE_FILE, JSON.stringify(database, null, 2), error => {
+		fs.writeFileSync(database, JSON.stringify(database, null, 2), error => {
 			if (error) {
 				throw new Error(error)
 			}
@@ -16,7 +16,7 @@ class Blog {
 		return true
 	}
 
-	static async getPostsByPageLimit (page, limit) {
+	static async getPostsByPageLimit(page, limit) {
 		let totalBlogPosts = database.blog.length
 		let totalPages = parseInt(totalBlogPosts / limit)
 		let totalBlogPostsLastPage = (totalBlogPosts % limit)
@@ -39,7 +39,7 @@ class Blog {
 		}
 	}
 
-	static getAll () {
+	static getAll() {
 		try {
 			return database.blog
 		} catch (error) {
@@ -47,7 +47,7 @@ class Blog {
 		};
 	}
 
-	static async getTotal () {
+	static async getTotal() {
 		try {
 			return database.blog.length
 		} catch (error) {
@@ -55,7 +55,7 @@ class Blog {
 		}
 	}
 
-	static getBySlug (slug) {
+	static getBySlug(slug) {
 		try {
 			for (let i = 0; i < database.blog.length; i++) {
 				if (database.blog[i].slug === slug) {
@@ -68,7 +68,7 @@ class Blog {
 		}
 	}
 
-	static getByID (blog_id) {
+	static getByID(blog_id) {
 		try {
 			for (let i = 0; i < database.blog.length; i++) {
 				if (database.blog[i].id === parseInt(blog_id)) {
@@ -81,7 +81,7 @@ class Blog {
 		}
 	}
 
-	static createComment (slug, commentObject) {
+	static createComment(slug, commentObject) {
 		try {
 			for (let i = 0; i < database.blog.length; i++) {
 				if (database.blog[i].slug === slug) {
@@ -97,7 +97,7 @@ class Blog {
 		}
 	}
 
-	static deleteCommentByID (slug, comment_id) {
+	static deleteCommentByID(slug, comment_id) {
 		try {
 
 			for (let i = 0; i < database.blog.length; i++) {
@@ -124,7 +124,7 @@ class Blog {
 		}
 	}
 
-	static create (blogPostObject) {
+	static create(blogPostObject) {
 		blogPostObject.slug = slugify(blogPostObject.title)
 
 		try {
@@ -137,7 +137,7 @@ class Blog {
 		}
 	}
 
-	static update (blogPostObject) {
+	static update(blogPostObject) {
 		try {
 			for (let i = 0; i < database.blog.length; i++) {
 
@@ -159,7 +159,7 @@ class Blog {
 		}
 	}
 
-	static deleteByID (blog_id) {
+	static deleteByID(blog_id) {
 		try {
 			for (let i = 0; i < database.blog.length; i++) {
 				if (database.blog[i].id === parseInt(blog_id)) {

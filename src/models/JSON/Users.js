@@ -7,15 +7,15 @@ import DateTime from '../../helpers/DateTime.js';
 
 import database from '../../config/json_database.js';
 class Users {
-	static save (database) {
-		fs.writeFileSync(process.env.JSON_DATABASE_FILE, JSON.stringify(database, null, 2), error => {
+	static save(database) {
+		fs.writeFileSync(database, JSON.stringify(database, null, 2), error => {
 			if (error) {
 				throw new Error(error);
 			}
 		});
 	}
 
-	static getAll () {
+	static getAll() {
 		try {
 			return database.users
 		} catch (error) {
@@ -23,7 +23,7 @@ class Users {
 		};
 	}
 
-	static getByID (user_id) {
+	static getByID(user_id) {
 		try {
 			for (let i = 0; i < database.users.length; i++) {
 				if (database.users[i].id == user_id) return database.users[i]
@@ -34,7 +34,7 @@ class Users {
 		}
 	}
 
-	static getUserByEmail (email) {
+	static getUserByEmail(email) {
 		try {
 			for (let i = 0; i < database.users.length; i++) {
 				if (database.users[i].email == email) return database.users[i]
@@ -45,7 +45,7 @@ class Users {
 		}
 	}
 
-	static verifyIfAdminByID (user_id) {
+	static verifyIfAdminByID(user_id) {
 		try {
 			for (let i = 0; i < database.users.length; i++) {
 				if (database.users[i].id === user_id) {
@@ -59,7 +59,7 @@ class Users {
 		}
 	}
 
-	static emailRegistred (email) {
+	static emailRegistred(email) {
 		try {
 			for (let i = 0; i < database.users.length; i++) {
 				if (database.users[i].email === email) {
@@ -72,7 +72,7 @@ class Users {
 		}
 	}
 
-	static async verifyConfirmEmailToken (email, token) {
+	static async verifyConfirmEmailToken(email, token) {
 		try {
 			for (let i = 0; i < database.users.length; i++) {
 				if (
@@ -92,7 +92,7 @@ class Users {
 		}
 	}
 
-	static async createConfirmEmailToken (email, confirmEmailToken) {
+	static async createConfirmEmailToken(email, confirmEmailToken) {
 		try {
 			for (let i = 0; i < database.users.length; i++) {
 				if (database.users[i].email === email) {
@@ -108,7 +108,7 @@ class Users {
 		}
 	}
 
-	static verifyIfEmailIsConfirmed (email) {
+	static verifyIfEmailIsConfirmed(email) {
 		try {
 			for (let i = 0; i < database.users.length; i++) {
 				if (database.users[i].email == email && database.users[i].confirmed_email) {
@@ -121,7 +121,7 @@ class Users {
 		}
 	}
 
-	static async verifyLogin (email, password) {
+	static async verifyLogin(email, password) {
 		try {
 			for (let i = 0; i < database.users.length; i++) {
 				if (database.users[i].email === email) {
@@ -138,7 +138,7 @@ class Users {
 		}
 	}
 
-	static async verifyPassword (user_id, password) {
+	static async verifyPassword(user_id, password) {
 		try {
 			for (let i = 0; i < database.users.length; i++) {
 				if (database.users[i].id === user_id) {
@@ -154,7 +154,7 @@ class Users {
 		}
 	}
 
-	static async create (userObject) {
+	static async create(userObject) {
 		try {
 
 			if (Users.emailRegistred(userObject.email)) return false
@@ -193,7 +193,7 @@ class Users {
 		}
 	}
 
-	static async createResetPasswordToken (email) {
+	static async createResetPasswordToken(email) {
 		try {
 			const reset_password_token = randomToken.generate(24);
 
@@ -209,7 +209,7 @@ class Users {
 		}
 	}
 
-	static resetPasswordTokenIsValid (email, resetPasswordToken) {
+	static resetPasswordTokenIsValid(email, resetPasswordToken) {
 		try {
 			for (let i = 0; i < database.users.length; i++) {
 				if (database.users[i].email === email
@@ -224,7 +224,7 @@ class Users {
 		}
 	}
 
-	static async resetPassword (email, newPassword) {
+	static async resetPassword(email, newPassword) {
 		try {
 			for (let i = 0; i < database.users.length; i++) {
 				if (database.users[i].email === email) {
@@ -241,7 +241,7 @@ class Users {
 		}
 	}
 
-	static async update (userObject) {
+	static async update(userObject) {
 		try {
 
 			for (let i = 0; i < database.users.length; i++) {
@@ -280,7 +280,7 @@ class Users {
 		}
 	}
 
-	static async delete (email, password) {
+	static async delete(email, password) {
 		try {
 			for (let i = 0; i < database.users.length; i++) {
 				if (database.users[i].email === email) {

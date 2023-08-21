@@ -9,15 +9,15 @@ import database from '../../config/json_database.js';
 
 class Customers {
 
-	static save (database) {
-		fs.writeFileSync(process.env.JSON_DATABASE_FILE, JSON.stringify(database, null, 2), error => {
+	static save(database) {
+		fs.writeFileSync(database, JSON.stringify(database, null, 2), error => {
 			if (error) {
 				throw new Error(error);
 			}
 		});
 	}
 
-	static getByCPF (customer_cpf) {
+	static getByCPF(customer_cpf) {
 		try {
 			for (let i = 0; i < database.customers.length; i++) {
 				if (parseInt(database.customers[i].cpf) === parseInt(customer_cpf)) return database.customers[i]
@@ -29,7 +29,7 @@ class Customers {
 	}
 
 
-	static getAll () {
+	static getAll() {
 		try {
 			return database.customers
 		} catch (error) {
@@ -38,7 +38,7 @@ class Customers {
 	}
 
 
-	static getByID (user_id) {
+	static getByID(user_id) {
 		try {
 			for (let i = 0; i < database.customers.length; i++) {
 				if (database.customers[i].id == user_id) return database.customers[i]
@@ -50,7 +50,7 @@ class Customers {
 	}
 
 
-	static getUserByEmail (email) {
+	static getUserByEmail(email) {
 		try {
 			for (let i = 0; i < database.customers.length; i++) {
 				if (database.customers[i].email == email) return database.customers[i]
@@ -62,7 +62,7 @@ class Customers {
 	}
 
 
-	static verifyIfAdminByID (user_id) {
+	static verifyIfAdminByID(user_id) {
 		try {
 			for (let i = 0; i < database.customers.length; i++) {
 				if (database.customers[i].id === user_id) {
@@ -78,7 +78,7 @@ class Customers {
 
 
 
-	static emailRegistred (email) {
+	static emailRegistred(email) {
 		try {
 			for (let i = 0; i < database.customers.length; i++) {
 				if (database.customers[i].email === email) {
@@ -91,7 +91,7 @@ class Customers {
 		}
 	}
 
-	static async verifyConfirmEmailToken (email, token) {
+	static async verifyConfirmEmailToken(email, token) {
 		try {
 			for (let i = 0; i < database.customers.length; i++) {
 				if (
@@ -111,7 +111,7 @@ class Customers {
 		}
 	}
 
-	static async createConfirmEmailToken (email, confirmEmailToken) {
+	static async createConfirmEmailToken(email, confirmEmailToken) {
 		try {
 			for (let i = 0; i < database.customers.length; i++) {
 				if (database.customers[i].email === email) {
@@ -127,7 +127,7 @@ class Customers {
 		}
 	}
 
-	static verifyIfEmailIsConfirmed (email) {
+	static verifyIfEmailIsConfirmed(email) {
 		try {
 			for (let i = 0; i < database.customers.length; i++) {
 				if (database.customers[i].email == email && database.customers[i].confirmed_email) {
@@ -140,7 +140,7 @@ class Customers {
 		}
 	}
 
-	static async verifyLogin (email, password) {
+	static async verifyLogin(email, password) {
 		try {
 			for (let i = 0; i < database.customers.length; i++) {
 				if (database.customers[i].email === email) {
@@ -157,7 +157,7 @@ class Customers {
 		}
 	}
 
-	static async verifyPassword (user_id, password) {
+	static async verifyPassword(user_id, password) {
 		try {
 			for (let i = 0; i < database.customers.length; i++) {
 				if (database.customers[i].id === user_id) {
@@ -173,7 +173,7 @@ class Customers {
 		}
 	}
 
-	static async create (userObject) {
+	static async create(userObject) {
 		try {
 
 			if (Users.emailRegistred(userObject.email)) return false
@@ -224,7 +224,7 @@ class Customers {
 		}
 	}
 
-	static async createResetPasswordToken (email) {
+	static async createResetPasswordToken(email) {
 		try {
 			const reset_password_token = await randomToken.generate(24);
 
@@ -240,7 +240,7 @@ class Customers {
 		}
 	}
 
-	static resetPasswordTokenIsValid (email, resetPasswordToken) {
+	static resetPasswordTokenIsValid(email, resetPasswordToken) {
 		try {
 			for (let i = 0; i < database.customers.length; i++) {
 				if (database.customers[i].email === email
@@ -255,7 +255,7 @@ class Customers {
 		}
 	}
 
-	static async resetPassword (email, newPassword) {
+	static async resetPassword(email, newPassword) {
 		try {
 			for (let i = 0; i < database.customers.length; i++) {
 				if (database.customers[i].email === email) {
@@ -272,7 +272,7 @@ class Customers {
 		}
 	}
 
-	static async update (userObject) {
+	static async update(userObject) {
 		try {
 
 			for (let i = 0; i < database.customers.length; i++) {
@@ -312,7 +312,7 @@ class Customers {
 		}
 	}
 
-	static async delete (email, password) {
+	static async delete(email, password) {
 		try {
 			for (let i = 0; i < database.customers.length; i++) {
 				if (database.customers[i].email === email) {
