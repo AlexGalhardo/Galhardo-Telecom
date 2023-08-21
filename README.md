@@ -6,11 +6,11 @@
 ## Setup
 - Clone repository
 ```
-git clone https://github.com/AlexGalhardo/galhardo-telecom
+git clone https://github.com/AlexGalhardo/Galhardo-Gelecom
 ```
 - Enter folder
 ```
-cd galhardo-telecom
+cd Galhardo-Gelecom
 ```
 - Install dependencies
 ```
